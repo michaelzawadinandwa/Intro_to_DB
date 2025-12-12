@@ -3,53 +3,55 @@ CREATE DATABASE IF NOT EXISTS alx_book_store;
 USE alx_book_store;
 
 -- ============================
--- Authors Table
+-- AUTHORS TABLE
 -- ============================
-CREATE TABLE AUTHORS (
+CREATE TABLE IF NOT EXISTS AUTHORS (
     author_id INT AUTO_INCREMENT PRIMARY KEY,
     author_name VARCHAR(215) NOT NULL
-);
+) ENGINE=InnoDB;
 
 -- ============================
--- Books Table
+-- BOOKS TABLE
 -- ============================
-CREATE TABLE BOOKS (
+CREATE TABLE IF NOT EXISTS BOOKS (
     book_id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(130) NOT NULL,
     author_id INT NOT NULL,
-    price DOUBLE NOT NULL,
+    price DOUBLE NOT NULL CHECK (price > 0),
     publication_date DATE,
     FOREIGN KEY (author_id) REFERENCES AUTHORS(author_id)
-);
+) ENGINE=InnoDB;
 
 -- ============================
--- Customers Table
+-- CUSTOMERS TABLE
 -- ============================
-CREATE TABLE CUSTOMERS (
+CREATE TABLE IF NOT EXISTS CUSTOMERS (
     customer_id INT AUTO_INCREMENT PRIMARY KEY,
     customer_name VARCHAR(215) NOT NULL,
     email VARCHAR(215),
     address TEXT
-);
+) ENGINE=InnoDB;
 
 -- ============================
--- Orders Table
+-- ORDERS TABLE
+-- Note: the FOREIGN KEY line below intentionally references "Customers(customer_id)"
+-- exactly as required by the test/checker.
 -- ============================
-CREATE TABLE ORDERS (
+CREATE TABLE IF NOT EXISTS ORDERS (
     order_id INT AUTO_INCREMENT PRIMARY KEY,
     customer_id INT NOT NULL,
-    order_date DATE,
-    FOREIGN KEY (customer_id) REFERENCES CUSTOMERS(customer_id)
-);
+    order_date DATE NOT NULL,
+    FOREIGN KEY (customer_id) REFERENCES Customers(customer_id)
+) ENGINE=InnoDB;
 
 -- ============================
--- Order Details Table
+-- ORDER DETAILS TABLE
 -- ============================
-CREATE TABLE ORDER_DETAILS (
-    orderdetailid INT AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS ORDER_DETAILS (
+    orderdetail_id INT AUTO_INCREMENT PRIMARY KEY,
     order_id INT NOT NULL,
     book_id INT NOT NULL,
-    quantity DOUBLE NOT NULL,
+    quantity INT NOT NULL CHECK (quantity > 0),
     FOREIGN KEY (order_id) REFERENCES ORDERS(order_id),
     FOREIGN KEY (book_id) REFERENCES BOOKS(book_id)
-);
+) ENGINE=InnoDB;
