@@ -1,9 +1,17 @@
--- Analyze the table as required
-ANALYZE TABLE BOOKS;
+-- Script to print full description of the books table
+-- Database: alx_book_store
 
--- Print full description of the BOOKS table
-SELECT COLUMN_NAME, COLUMN_TYPE, IS_NULLABLE, COLUMN_KEY, COLUMN_DEFAULT, EXTRA
-FROM INFORMATION_SCHEMA.COLUMNS
-WHERE TABLE_SCHEMA = DATABASE()
-  AND TABLE_NAME = 'BOOKS';
-use ALX_BOOK_STORE;
+SELECT 
+    COLUMN_NAME AS 'Field',
+    COLUMN_TYPE AS 'Type',
+    IS_NULLABLE AS 'Null',
+    COLUMN_KEY AS 'Key',
+    COLUMN_DEFAULT AS 'Default',
+    EXTRA AS 'Extra'
+FROM 
+    INFORMATION_SCHEMA.COLUMNS
+WHERE 
+    TABLE_SCHEMA = 'alx_book_store'
+    AND TABLE_NAME = 'books'
+ORDER BY 
+    ORDINAL_POSITION;
