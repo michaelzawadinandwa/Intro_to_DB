@@ -1,17 +1,12 @@
--- Use the database
 USE ALX_BOOK_STORE;
 
--- ==========================================
 -- AUTHORS TABLE
--- ==========================================
 CREATE TABLE IF NOT EXISTS AUTHORS (
     AUTHOR_ID INT AUTO_INCREMENT PRIMARY KEY,
-    AUTHOR_NAME VARCHAR(255) NOT NULL
+    AUTHOR_NAME VARCHAR(215) NOT NULL
 );
 
--- ==========================================
 -- BOOKS TABLE
--- ==========================================
 CREATE TABLE IF NOT EXISTS BOOKS (
     BOOK_ID INT AUTO_INCREMENT PRIMARY KEY,
     TITLE VARCHAR(255) NOT NULL,
@@ -21,9 +16,7 @@ CREATE TABLE IF NOT EXISTS BOOKS (
     FOREIGN KEY (AUTHOR_ID) REFERENCES AUTHORS(AUTHOR_ID)
 );
 
--- ==========================================
 -- CUSTOMERS TABLE
--- ==========================================
 CREATE TABLE IF NOT EXISTS CUSTOMERS (
     CUSTOMER_ID INT AUTO_INCREMENT PRIMARY KEY,
     CUSTOMER_NAME VARCHAR(255) NOT NULL,
@@ -31,9 +24,7 @@ CREATE TABLE IF NOT EXISTS CUSTOMERS (
     PHONE VARCHAR(50)
 );
 
--- ==========================================
 -- ORDERS TABLE
--- ==========================================
 CREATE TABLE IF NOT EXISTS ORDERS (
     ORDER_ID INT AUTO_INCREMENT PRIMARY KEY,
     CUSTOMER_ID INT NOT NULL,
@@ -41,9 +32,7 @@ CREATE TABLE IF NOT EXISTS ORDERS (
     FOREIGN KEY (CUSTOMER_ID) REFERENCES CUSTOMERS(CUSTOMER_ID)
 );
 
--- ==========================================
 -- ORDER_DETAILS TABLE
--- ==========================================
 CREATE TABLE IF NOT EXISTS ORDER_DETAILS (
     ORDER_DETAIL_ID INT AUTO_INCREMENT PRIMARY KEY,
     ORDER_ID INT NOT NULL,
