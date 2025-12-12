@@ -2,11 +2,8 @@
 import MySQLdb
 
 def create_database():
-    db = None
-    cursor = None
-
     try:
-        # Attempt to connect to MySQL server
+        # Connect to MySQL server (NOT to any specific database yet)
         db = MySQLdb.connect(
             host="localhost",
             user="root",
@@ -15,32 +12,22 @@ def create_database():
 
         cursor = db.cursor()
 
-        try:
-            # Attempt to create the database
-            cursor.execute("CREATE DATABASE IF NOT EXISTS alx_book_store")
-            print("Database 'alx_book_store' created successfully!")
+        # Create database if it does not exist
+        cursor.execute("CREATE DATABASE IF NOT EXISTS alx_book_store")
 
-        except Exception as sql_error:
-            print("Error: Failed to create the database.")
-            print(f"Reason: {sql_error}")
+        print("Database 'alx_book_store' created successfully!")
 
-    except Exception as conn_error:
+    except Exception as e:
         print("Error: Unable to connect to the MySQL server.")
-        print(f"Reason: {conn_error}")
+        return
 
     finally:
-        # Safely close cursor and connection
-        if cursor is not None:
-            try:
-                cursor.close()
-            except Exception:
-                pass
-
-        if db is not None:
-            try:
-                db.close()
-            except Exception:
-                pass
+        # Ensure DB closes safely
+        try:
+            cursor.close()
+            db.close()
+        except:
+            pass
 
 
 if __name__ == "__main__":
