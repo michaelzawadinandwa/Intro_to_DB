@@ -1,6 +1,5 @@
 -- task_4.sql
 -- Script to print full description of the books table
-table:books
 SELECT
     COLUMN_NAME,
     COLUMN_TYPE,
