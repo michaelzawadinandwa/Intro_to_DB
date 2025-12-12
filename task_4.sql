@@ -1,10 +1,14 @@
--- Script to print full description of the books table
+-- task_4.sql
+-- Script to print full description of the books table without using DESCRIBE
+
+ANALYZE TABLE books;
+
 SELECT 
-    COLUMN_NAME, 
-    COLUMN_TYPE, 
-    IS_NULLABLE, 
-    COLUMN_KEY, 
-    COLUMN_DEFAULT, 
+    COLUMN_NAME,
+    COLUMN_TYPE,
+    IS_NULLABLE,
+    COLUMN_KEY,
+    COLUMN_DEFAULT,
     EXTRA
 FROM 
     INFORMATION_SCHEMA.COLUMNS
