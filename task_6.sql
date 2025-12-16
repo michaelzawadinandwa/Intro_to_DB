@@ -1,6 +1,6 @@
+@@ -1,13 +1,9 @@
 -- task_6.sql
 -- Insert multiple customers into the customer table for alx_book_store
-
 -- Idempotent insert: ensures rows with IDs 2,3,4 exist
 INSERT INTO customer (customer_id, customer_name, email, address)
 VALUES
