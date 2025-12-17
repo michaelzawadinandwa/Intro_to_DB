@@ -33,7 +33,7 @@ def create_database():
         print(f"Unexpected error: {e}")
     finally:
         # Close cursor safely
-        if cursor is not None:
+        if cursor is not None:   
             try:
                 cursor.close()
             except Error as e:
