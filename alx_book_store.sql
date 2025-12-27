@@ -31,20 +31,11 @@ CREATE TABLE CUSTOMERS (
     email VARCHAR(215),
     address TEXT
 );
- -- ============================
- --cutomer id 
- -- ============================
- CREATE TABLE customer_id (
-    customer_id INT AUTO_INCREMENT PRIMARY KEY,
-    customer_name VARCHAR(215) NOT NULL,
-    email VARCHAR(215),
-    address TEXT
- )
 -- ============================
 -- Orders Table
 -- ============================
 CREATE TABLE ORDERS (
-    order_id INT AUTO_INCREMENT FOREIGN KEY,
+    order_id INT AUTO_INCREMENT PRIMARY KEY,
     customer_id INT NOT NULL,
     order_date DATE,
     FOREIGN KEY (customer_id) REFERENCES CUSTOMERS(customer_id)
