@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS CUSTOMERS (
 -- ============================
 -- Orders Table
 -- ============================
+-- FOREIGN KEY (customer_id) REFERENCES Customers(customer_id)
 CREATE TABLE IF NOT EXISTS ORDERS (
     order_id INT AUTO_INCREMENT PRIMARY KEY,
     customer_id INT NOT NULL,
