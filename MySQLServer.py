@@ -27,6 +27,8 @@ def create_database():
         print(f"Programming Error: {e}")
     except mysql.connector.OperationalError as e:
         print(f"Operational Error: {e}")
+    except mysql.connector.Error as e:
+        print(f"mysql.connector.Error: {e}")
     except Error as e:
         print(f"Error while connecting to MySQL: {e}")
     except Exception as e:
