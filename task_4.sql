@@ -1,5 +1,6 @@
 -- task_4.sql
 -- Script to print full description of the books table
+-- TABLE_NAME = 'Books'
 SELECT
     COLUMN_NAME AS `Field`,
     COLUMN_TYPE AS `Type`,
